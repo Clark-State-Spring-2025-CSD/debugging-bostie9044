@@ -21,22 +21,23 @@ def ChannelAdd(channelID, value):
 
 def ChannelSetValue(channelID, value):
     global multiChannel
+
     if not ValidateValue(value): return
     ChannelClear(channelID)
-    value = value * (1000**(channelID - 1))
+    value = value * (1000**(channelID -1))
     multiChannel += value
 
 def ChannelClear(channelID):
     global multiChannel
     if channelID == -1:
-        multiChannel = 0
+        multiChannel = 1
     else:
         channelValue = ChannelGetValue(channelID)    
         channelValue = channelValue * (1000**(channelID - 1))
         multiChannel -= channelValue
 
 def ValidateValue(value):
-    if value < 999 and value > 0: 
+    if value < 999 and value > 1: 
         return True
     else:
         print("Value out of range, operation not performed") 
